@@ -1,17 +1,31 @@
 <template>
-  <el-button-group>
-    <el-button type="primary" :icon="ArrowLeft">Previous Page</el-button>
+  <el-dropdown trigger="click" @command="handleCommand">
     <el-button type="primary">
-      Next Page<el-icon class="el-icon--right"><ArrowRight /></el-icon>
+      导出风险<i class="el-icon-arrow-down el-icon--right"></i>
     </el-button>
-  </el-button-group>
-
-  <el-button-group class="ml-4">
-    <el-button type="primary" :icon="Edit" />
-    <el-button type="primary" :icon="Share" />
-    <el-button type="primary" :icon="Delete" />
-  </el-button-group>
+    <el-dropdown-menu slot="dropdown">
+      <el-dropdown-item command="advancedExport">高级导出</el-dropdown-item>
+    </el-dropdown-menu>
+  </el-dropdown>
 </template>
+
+<script>
+export default {
+  methods: {
+    handleCommand(command) {
+      if (command === 'advancedExport') {
+        // 处理高级导出的逻辑
+        this.handleAdvancedExport();
+      }
+    },
+    handleAdvancedExport() {
+      // 这里写高级导出的逻辑
+      console.log('执行高级导出');
+    }
+  }
+};
+</script>
+
 
 <script setup lang="ts">
 import {
